@@ -24,6 +24,7 @@ router.post("/register", async (req, res) => {
       username,
       isAdmin,
     });
+    console.log(result, result instanceof User)
     if (result instanceof User) {
       const newUser = {
         _id: result._doc._id,
