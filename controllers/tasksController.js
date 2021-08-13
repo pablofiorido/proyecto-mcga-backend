@@ -16,6 +16,7 @@ const controller = {
     removeTask: (id) => {
         return actionHandler(() => taskModel.deleteOne({ _id: id }));
     },
+    
     editTask: (data) => {
         return actionHandler(() => taskModel.findOneAndUpdate({ _id: data._id }, data, { new: true, useFindAndModify: false }, handleError));
     }
