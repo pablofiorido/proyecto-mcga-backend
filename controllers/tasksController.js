@@ -48,9 +48,7 @@ const controller = {
         });
     }),
 
-
-    
-
+/*
     editTask: (data) => 
     new Promise((resolve, reject) => {
         return actionHandler(async()  => {
@@ -58,14 +56,14 @@ const controller = {
             resolve(result);
         });
     }),
+*/
 
-/*
     editTask: (data) => {
         return actionHandler(() => taskModel.findOneAndUpdate({ _id: data._id }, data, { new: true, useFindAndModify: false }, handleError));
     }
 
-    */
-
+    
 }
+
 
 module.exports = controller;
