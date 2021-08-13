@@ -6,9 +6,13 @@ const controller = {
     getAllTaks: () => {
         return actionHandler(() => taskModel.find());
     },
-    addTask: (data) => {
-        return actionHandler(() => taskModel.create(data));
-    },
+    addTask: (data) => 
+    new Promise((resolve, reject) => {
+        return actionHandler(async()  => {
+            const result = await taskModel.create(data)
+            resolve(result);
+        });
+    }),
     removeTask: (id) => {
         return actionHandler(() => taskModel.deleteOne({ _id: id }));
     },
