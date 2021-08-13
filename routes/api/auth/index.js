@@ -6,6 +6,7 @@ const { encrypt } = require("../../../helpers/encrypt");
 
 const router = express.Router();
 
+//ESTE ES PARA EL LOGIN
 router.post("/login", (req, res) => {
   try {
     controller.login(req, res);
@@ -14,8 +15,15 @@ router.post("/login", (req, res) => {
   }
 });
 
+
+//ESTE ES PARA DAR DE ALTA UN USUARIO, PROBADO CON POSTMAN Y FUNCIONA
 router.post("/register", async (req, res) => {
   try {
+    //OBTIENE LA DATA DE LA REQUEST QUE VIAJA EN EL BODY
+    //ENCRIPTO LA PASSWORD
+    //USA LA FUNCION ASYNC PARA PODER HACER EL AWAIT Y ESPERAR EL RESULTADO DEL ENCRYPT QUE SE TOMA SU TIEMPO.
+    //EL ASYNC / AWAIT (IMPLEMENTADO EN ES6) NOS SIRVE PARA ESPERAR EL RESULTADO DE LA PROMISE
+    // si no usara async/await, deberia ejecutar los metodos .then y .catch y luego meter el codigo o nestearlo dentro del .then porq necesito el resultado de la promesa.
     const { email, password, username, isAdmin } = req.body;
     const encryptedPassword = await encrypt(password);
     const result = await controller.createUser({
